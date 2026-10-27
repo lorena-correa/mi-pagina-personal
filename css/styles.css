@@ -1,0 +1,244 @@
+:root {
+  --color-light: #8ECCCD;
+  --color-medium: #57A4A6;
+  --color-light-bg: #E9F7F7;
+  --color-dark: #2B7778;
+  --color-darker: #0F4C4D;
+  --color-darkest: #023233;
+  --white: #FFFFFF;
+  --gray-light: #F5F5F5;
+  --gray-medium: #E0E0E0;
+  --gray-dark: #757575;
+  --degradado-boton: linear-gradient(135deg, var(--color-medium), var(--color-darker));
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  color: var(--color-darkest);
+  padding-top: 70px;
+  min-height: 100vh;
+  /* Fondo degradado claro arriba → verde azulado abajo */
+  background: linear-gradient(180deg,
+              var(--white) 0%,
+              var(--color-light-bg) 25%,
+              var(--color-light) 65%,
+              var(--color-medium) 100%) fixed;
+}
+
+/* ===== Menú ===== */
+.barra {
+  background: var(--white);
+  box-shadow: 0 2px 10px rgba(2, 50, 51, 0.08);
+}
+.marca, .marca:hover { color: var(--color-darkest); }
+.marca i { color: var(--color-dark); }
+.barra .nav-link { color: var(--color-darker); font-weight: 500; }
+.barra .nav-link:hover,
+.barra .nav-link.active { color: var(--color-medium); }
+
+/* ===== Secciones y tarjetas ===== */
+.seccion { padding: 2rem 0; scroll-margin-top: 70px; }
+
+.tarjeta {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 6px 20px rgba(2, 50, 51, 0.08);
+}
+
+.titulo-principal { color: var(--color-darkest); font-size: 2.2rem; }
+.subtitulo { color: var(--color-dark); font-weight: 600; font-size: 1.15rem; min-height: 1.6em; }
+.cursor { animation: parpadeo 0.8s infinite; color: var(--color-medium); }
+@keyframes parpadeo { 50% { opacity: 0; } }
+
+.titulo-tarjeta {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--color-darkest);
+}
+.titulo-tarjeta i, .icono { color: var(--color-dark); }
+
+.titulo-seccion {
+  text-align: center;
+  font-weight: 700;
+  color: var(--color-darkest);
+  margin-bottom: 1.75rem;
+}
+.titulo-seccion::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin: 10px auto 0;
+  border-radius: 2px;
+  background: var(--degradado-boton);
+}
+
+.texto-suave { color: var(--gray-dark); }
+.empresa { color: var(--color-dark); font-weight: 600; }
+
+.datos li { margin-bottom: 0.35rem; }
+.datos i { color: var(--color-dark); margin-right: 6px; }
+.datos a { color: var(--color-darker); }
+
+.item-lista {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--gray-medium);
+}
+
+/* Lista con círculos, como en tu imagen */
+.lista-check { list-style: none; padding-left: 0; margin: 0; }
+.lista-check li {
+  position: relative;
+  padding: 0.45rem 0 0.45rem 1.6rem;
+  border-bottom: 1px solid var(--gray-light);
+}
+.lista-check li:last-child { border-bottom: none; }
+.lista-check li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-medium);
+  border-radius: 50%;
+}
+
+/* ===== Foto ===== */
+.foto-perfil {
+  width: 190px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 5px;
+  background: var(--degradado-boton);
+}
+
+/* ===== Botones ===== */
+.btn-principal {
+  background: var(--degradado-boton);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  padding: 0.55rem 1.2rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-principal:hover {
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 76, 77, 0.3);
+}
+
+.btn-filtro {
+  border: 2px solid var(--color-dark);
+  color: var(--color-darker);
+  background: var(--white);
+  border-radius: 20px;
+  margin: 0 4px;
+  padding: 0.25rem 1rem;
+}
+.btn-filtro.active { background: var(--degradado-boton); color: var(--white); border-color: transparent; }
+.btn-filtro:disabled { opacity: 0.5; pointer-events: none; }
+
+/* ===== Habilidades ===== */
+.progress { background: var(--gray-light); height: 14px; border-radius: 10px; }
+.progress-bar {
+  width: 0;
+  background: linear-gradient(90deg, var(--color-light), var(--color-dark));
+  font-size: 0.7rem;
+  transition: width 1.5s ease;
+}
+
+.etiqueta {
+  background: var(--color-light-bg);
+  color: var(--color-darker);
+  border: 1px solid var(--color-light);
+  border-radius: 20px;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+#formacion .progress { height: 10px; }
+#formacion .progress-bar { font-size: 0; }
+#formacion .progress + p { margin-top: -4px; }
+
+/* ===== Proyectos ===== */
+.tarjeta-proyecto { transition: transform 0.3s, box-shadow 0.3s; }
+.tarjeta-proyecto:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(2, 50, 51, 0.18); }
+.icono-grande { font-size: 2.8rem; color: var(--color-dark); }
+
+/* ===== Contacto ===== */
+.form-control:focus {
+  border-color: var(--color-medium);
+  box-shadow: 0 0 0 0.2rem rgba(87, 164, 166, 0.25);
+}
+.alerta-exito { background: var(--color-light-bg); color: var(--color-darker); border: 1px solid var(--color-light); }
+
+/* ===== Pie ===== */
+.pie { background: linear-gradient(135deg, var(--color-darker), var(--color-darkest)); color: var(--white); }
+.pie a { color: var(--white); font-size: 1.4rem; margin: 0 8px; }
+.pie a:hover { color: var(--color-light); }
+
+/* ===== Botón volver arriba ===== */
+#btnArriba {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: none;
+  z-index: 1000;
+  background: var(--degradado-boton);
+  color: var(--white);
+}
+
+/*
+// ===== Divisor entre secciones =====
+.seccion {
+  position: relative;
+  padding: 3rem 0;
+}
+.seccion + .seccion::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-dark), transparent);
+}
+.seccion + .seccion::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--color-darker);
+  border: 3px solid var(--white);
+}*/
+
+/* ===== Tarjetas "Próximamente" ===== */
+.tarjeta-proxima {
+  opacity: 0.6;
+  border: 2px dashed var(--color-light);
+  box-shadow: none;
+}
+.tarjeta-proxima:hover { transform: none; box-shadow: none; }
+
+.btn-principal:disabled {
+  background: var(--gray-medium);
+  color: var(--gray-dark);
+  cursor: not-allowed;
+  pointer-events: auto;
+  transform: none;
+  box-shadow: none;
+}
